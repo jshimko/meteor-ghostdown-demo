@@ -1,5 +1,7 @@
 # Ghostdown - A Markdown editor with live preview
 
+Live demo:  http://ghostdown.meteor.com
+
 This is a demo of [my Ghostdown package](https://github.com/jshimko/meteor-ghostdown) for Meteor.  It was created by simply doing:
 
 `meteor create APPNAME`
@@ -28,7 +30,7 @@ and then finally, I added and compiled [the SCSS from the Ghost UI repo](https:/
 
 ## Development
 
-If you'd like to use this demo as a starting point for a Markdown editor, note that Ghost-UI uses [Bourbon](http://bourbon.io) mixins in the SCSS.  To make this easier, I created a [Compass](http://compass-style.org) config to import Bourbon (via the gem) as well as to give a place to configure CSS complilation settings.  To edit and compile the stylesheets, you will need to satisfy a few dependencies on your development machine first.  Note that the compass-notify gem is only included so there are nicer notifications on each `compass compile`.  It is entirely optional.
+If you'd like to use this demo as a starting point for a Markdown editor, note that Ghost-UI uses [Bourbon](http://bourbon.io) mixins in the SCSS.  To make this easier, I created a Compass [config](https://github.com/jshimko/meteor-ghostdown-demo/blob/master/client/scss/config.rb) to import Bourbon (via the gem) as well as to give a place to configure CSS complilation settings.  To edit and compile the SCSS, you will need to satisfy a few dependencies on your development machine first.  (Note that the compass-notify gem is only included so there are nicer notifications on each `compass compile`.  It is entirely optional.)
 
 To get started:
 
@@ -40,7 +42,7 @@ cd meteor-ghostdown-demo
 meteor
 ```
 
-To add/edit styles, install dependencies and start Compass in another terminal window:
+To add/edit styles, open another terminal window, install dependencies, and start Compass:
 
 ```
 gem install compass compass-notify bourbon
