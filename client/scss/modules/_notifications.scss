@@ -1,0 +1,187 @@
+/*
+ * Button classes, including
+ *
+ * Table of Contents
+ *
+ * Main Container
+ * Notifications
+ */
+
+
+ /* ==========================================================================
+   Main Container
+   ========================================================================== */
+
+@media (min-width: 401px) {
+    main {
+
+        // This is applied when there are 4 or more notifications
+        &[data-notification-count],
+        &[data-notification-count='4'] {
+            bottom: 224px;
+            .notifications.bottom {
+                bottom: -224px;
+            }
+        }
+
+        // When there's no top notifications
+        &[data-notification-count='0'],
+        &[data-notification-count='0'] .notifications.bottom {
+            bottom: 0;
+        }
+
+        // When 1, 2 or 3 notifications
+        &[data-notification-count='1'] {
+            bottom: 56px;
+            .notifications.bottom {
+                bottom: -56px;
+            }
+        }
+        &[data-notification-count='2'] {
+            bottom: 112px;
+            .notifications.bottom {
+                bottom: -112px;
+            }
+        }
+        &[data-notification-count='3'] {
+            bottom: 168px;
+            .notifications.bottom {
+                bottom: -168px;
+            }
+        }
+
+    } // main
+} // @media (min-width: 401px)
+
+
+ /* ==========================================================================
+   Notifications
+   ========================================================================== */
+
+.notifications {
+
+    @media (min-width: 401px) {
+        &.top {
+            max-height: (56px * 4);
+            overflow: auto;
+        }
+        &.bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 980;
+            width: 300px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+    }
+}
+
+.js-bb-notification {
+    @include transform(translateZ(0));
+}
+
+.notification {
+    @include icon($i-notification) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 44px;
+        padding: 14px 15px;
+        text-align: center;
+        color: rgba(255,255,255,0.8);
+        background: rgba(0,0,0,0.1);
+    };
+    width: 100%;
+    min-height: 40px;
+    max-height: 253px;
+    margin: 0 0 15px 0;
+    color: rgba(255,255,255,0.9);
+    background: $blue;
+    position: relative;
+    box-shadow: $shadow;
+    @include transform(translateZ(0));
+
+    @media (max-width: 400px) {
+        margin-bottom: 1px;
+    }
+
+    .notification-message {
+        display: block;
+        padding: 10px 43px 10px 57px;
+        max-height: 253px;
+        overflow: auto;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 34px;
+        @include icon-after($i-close) {
+            padding: 10px;
+            position: absolute;
+            top: 4px;
+            right: 1px;
+        };
+        color: rgba(255,255,255,0.6);
+        &:hover {
+            color: #fff;
+        }
+
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}
+
+.notification-success {
+    @extend .notification;
+    @include icon($i-success);
+    background: $green;
+
+    &.notification-passive {
+        @include animation(fade-out 1s linear);
+        @include animation-delay(3s);
+        @include animation-iteration-count(1);
+        @include animation-fill-mode(forwards);
+    }
+
+    &.notification-passive:hover {
+        @include animation(fade-in-snap 0.2s linear);
+    }
+}
+
+.notification-error {
+    @extend .notification;
+    @include icon($i-error);
+    background: $red;
+}
+
+
+.notification-warn {
+    @extend .notification;
+    @include icon($i-info);
+    background: $orange;
+}
+
+.notification-info {
+    @extend .notification;
+    @include icon($i-info);
+    background: $blue;
+}
+
+// Hide extra space taken up by update notification
+.update-available main {
+    bottom: 56px;
+}
