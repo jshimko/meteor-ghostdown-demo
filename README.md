@@ -14,14 +14,14 @@ The only code added for the demo was some base markup in `ghostdown.html` that s
 
 ```html
 <main class="editor">
-    <section class="entry-container">
-        <header>
-            <section class="box entry-title">
-                <input id="entry-title" class="" placeholder="Your Post Title" tabindex="1" type="text">
-            </section>
-        </header>
-        {{> GhostEditor}}
-    </section>
+  <section class="entry-container">
+    <header>
+      <section class="box entry-title">
+        <input id="entry-title" class="" placeholder="Your Post Title" tabindex="1" type="text">
+      </section>
+    </header>
+    {{> GhostEditor}}
+  </section>
 </main>
 ```
 
